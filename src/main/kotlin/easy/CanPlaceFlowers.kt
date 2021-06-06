@@ -1,5 +1,8 @@
 package easy
 
+/**
+Link: https://leetcode.com/problems/can-place-flowers/
+ **/
 fun main(args: Array<String>) {
     println(canPlaceFlowers(intArrayOf(1, 0, 0, 0, 1), n = 1)) // true
     println(canPlaceFlowers(intArrayOf(1, 0, 0, 0, 1), n = 2)) // false
