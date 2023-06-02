@@ -1,6 +1,6 @@
 package easy
 
-/**
+/***
  * A pair (i, j) is called good if nums[i] == nums[j] and i < j.
  *
 Link: https://leetcode.com/problems/number-of-good-pairs/
