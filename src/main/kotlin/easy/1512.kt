@@ -12,6 +12,7 @@ fun main(args: Array<String>) {
 
 }
 
+
 fun numIdenticalPairs(nums: IntArray): Int {
     var count = 0
     nums.forEachIndexed { indexI, i ->
