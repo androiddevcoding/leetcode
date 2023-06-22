@@ -1,18 +1,19 @@
 package easy
 
 fun main(args: Array<String>) {
-    println(sumOfUnique(intArrayOf(1, 1, 1, 1, 1, 2, 3, 4, 5)))
+    println(numberOfPairs(intArrayOf(1, 1, 1, 1, 1, 3, 3, 3, 2, 1, 3, 2, 2)).toList().toString())
 }
 
-fun sumOfUnique(nums: IntArray): Int {
-    var result = 0
-    val intArray = IntArray(101)
-    nums.forEach { num ->
-        intArray[num] += 1
-        if (intArray[num] == 1) result += num
-        if (intArray[num] == 2) result -= num
+fun numberOfPairs(nums: IntArray): IntArray {
+    val numsSet = hashSetOf<Int>()
+
+    var count = 0
+    nums.forEach {
+        if (numsSet.add(it).not()) {
+            numsSet.remove(it)
+            count++
+        }
     }
-    return result
+    return intArrayOf(count, numsSet.size)
 }
-
 
