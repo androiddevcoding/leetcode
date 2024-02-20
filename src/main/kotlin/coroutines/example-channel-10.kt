@@ -15,6 +15,7 @@ fun main() = runBlocking {
     nextElement = withTimeoutOrNull(60) { tickerChannel.receive() }
     println("Next element is ready in 100 ms: $nextElement")
 
+
     // Emulate large consumption delays
     println("Consumer pauses for 150ms")
     delay(150)
