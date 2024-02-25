@@ -1,6 +1,9 @@
 package coroutines
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking<Unit> {
     // launch a coroutine to process some kind of incoming request

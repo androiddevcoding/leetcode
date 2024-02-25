@@ -12,8 +12,8 @@ suspend fun performRequest(request: Int): String {
 
 fun main() = runBlocking<Unit> {
     (1..5).asFlow().map { performRequest(it) }.collect {
-            println(it)
-        }
+        println(it)
+    }
 }
 
 

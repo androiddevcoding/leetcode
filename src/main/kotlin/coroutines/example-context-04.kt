@@ -1,6 +1,8 @@
 package coroutines
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.newSingleThreadContext
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withContext
 
 
 fun log(msg: String) = println("[${Thread.currentThread().name}] $msg")

@@ -1,6 +1,9 @@
 package coroutines
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.withTimeout
 
 var acquired = 0
 
@@ -14,7 +17,7 @@ class Resource {
     }
 }
 
-fun main(){
+fun main() {
     runBlocking {
         repeat(10_000) {
             launch {

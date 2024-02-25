@@ -1,6 +1,9 @@
 package coroutines
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.CoroutineName
+import kotlinx.coroutines.async
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.runBlocking
 
 fun main() = runBlocking(CoroutineName("main")) {
     log("Started main coroutine")

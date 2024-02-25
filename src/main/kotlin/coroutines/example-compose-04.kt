@@ -1,13 +1,16 @@
 package coroutines
 
-import kotlinx.coroutines.*
+import kotlinx.coroutines.DelicateCoroutinesApi
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.async
+import kotlinx.coroutines.runBlocking
 import kotlin.system.measureTimeMillis
 
 
 fun main() {
     val time = measureTimeMillis {
-        val one =  oneAsyns()
-        val two =  twoAsyns()
+        val one = oneAsyns()
+        val two = twoAsyns()
         one.start()
         two.start()
         runBlocking {
@@ -22,6 +25,7 @@ fun main() {
 fun oneAsyns() = GlobalScope.async {
     doSom1()
 }
+
 @OptIn(DelicateCoroutinesApi::class)
 
 fun twoAsyns() = GlobalScope.async {

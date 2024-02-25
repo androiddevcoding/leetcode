@@ -3,7 +3,6 @@ package coroutines
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 fun simple(): Flow<Int> = flow {

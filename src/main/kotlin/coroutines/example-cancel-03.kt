@@ -1,8 +1,6 @@
 package coroutines
 
 import kotlinx.coroutines.*
-import java.lang.Exception
-import java.lang.System.currentTimeMillis
 
 fun main() = runBlocking {
     val job = launch(Dispatchers.Default) {
