@@ -1,24 +1,29 @@
 package coroutines
 
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.cancel
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
+import kotlinx.coroutines.flow.MutableSharedFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 fun main() = runBlocking<Unit> {
+    val coroutineScope = CoroutineScope(Dispatchers.Default)
+    val sharedFlow = MutableSharedFlow<Int>()
 
-    val sharedFlow = MutableSharedFlow<Int>(2)
+    sharedFlow.tryEmit(1)
+    sharedFlow.tryEmit(2)
+    sharedFlow.tryEmit(3)
 
     sharedFlow.onEach {
         println("Emiting: $it")
-    }.launchIn(this)
+    }.launchIn(coroutineScope)
 
-    sharedFlow.onEach {
-        println("hello: $it")
-    }.launchIn(this)
+    coroutineScope.launch {
+        sharedFlow.emit(4)
+        sharedFlow.emit(5)
+        coroutineScope.cancel()
+    }
 
-    sharedFlow.emit(5)
-    sharedFlow.emit(3)
+    while (coroutineScope.isActive) {
 
-    Thread.sleep(50)
+    }
 }
