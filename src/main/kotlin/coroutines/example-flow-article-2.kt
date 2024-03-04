@@ -19,7 +19,7 @@ fun double(value: Int) = flow {
 }
 
     (1..3).asFlow()
-        .flatMapConcat {
+        .flatMapMerge {
             double(it)
         }
         .collect {
