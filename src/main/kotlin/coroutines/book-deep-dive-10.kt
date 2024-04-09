@@ -3,11 +3,19 @@ package coroutines
 import kotlinx.coroutines.*
 
 
-suspend fun main(): Unit =  runBlocking {
-    launch(Job()) { // the new job replaces one from parent
-        delay(1000)
-        println("Will not be printed")
+suspend fun main(): Unit = coroutineScope {
+    val job = Job()
+    launch(job) {
+            do {
+                Thread.sleep(200)
+                println("Printing") } while (isActive)
+
     }
+    delay(1000)
+    job.cancelAndJoin()
+    println("Cancelled successfully")
+    delay(1000)
+
 }
 
 
