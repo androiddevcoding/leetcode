@@ -1,35 +1,16 @@
 package coroutines
 
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withTimeout
-
-
-suspend fun test(): Int = withTimeout(1500) {
-    delay(1000)
-    println("Still thinking")
-    delay(1000)
-    println("Done!")
-    42
-}
-
+import kotlinx.coroutines.withContext
 
 suspend fun main(): Unit = coroutineScope {
-    launch { // 1
-        launch { // 2, cancelled by its parent
-            delay(2000)
-            println("Will not be printed")
+    launch(Dispatchers.Default) {
+
+        println(Thread.currentThread().name)
+        withContext(Dispatchers.IO) {
+            println(Thread.currentThread().name)
         }
-        withTimeout(1000) { // we cancel launch
-            delay(1500)
-        }
-    }
-    launch { // 3
-        delay(2000)
-        println("Done")
     }
 }
-
-
-
